@@ -1,0 +1,18 @@
+{
+  "name": "schedule-tennis",
+  "version": "1.0.0",
+  "description": "",
+  "main": "",
+  "scripts": {
+    "start": "node tests/schedule-tennis.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.35.0"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.1395.0"
+  }
+}
