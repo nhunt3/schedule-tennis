@@ -2,7 +2,7 @@ name: Schedule Tennis
 
 on:
   schedule:
-    - cron: '52 0 12 6 *'
+    - cron: '* * * * *'
 #  push:
 #    branches:
 #      - master
