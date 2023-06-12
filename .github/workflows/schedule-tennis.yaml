@@ -1,11 +1,11 @@
 name: Schedule Tennis
 
 on:
-#  schedule:
-#    - cron: '*/5 * * * *'
-  push:
-    branches:
-      - master
+  schedule:
+    - cron: '45 0 12 JUN *'
+#  push:
+#    branches:
+#      - master
 
 #    - cron: '0 7 * * 5'
 jobs:
