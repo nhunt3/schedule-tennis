@@ -1,11 +1,11 @@
 name: Schedule Tennis
 
 on:
-  schedule:
-    - cron: '0 13 12 6 *'
-#  push:
-#    branches:
-#      - master
+#  schedule:
+#    - cron: '0 13 12 6 *'
+  push:
+    branches:
+      - master
 
 #    - cron: '0 7 * * 5'
 jobs:
@@ -13,29 +13,29 @@ jobs:
     name: Schedule Tennis
     runs-on: ubuntu-latest
     steps:
-      - name: Hello World
-        run: echo 'Hi!'
-#      - name: Get code
-#        uses: actions/checkout@v3
-#
-#      - name: Install Node.js
-#        uses: actions/setup-node@v3
-#        with:
-#          node-version: '18'
-#
-#      - name: Cache dependencies
-#        id: cache
-#        uses: actions/cache@v3
-#        with:
-#          path: node_modules
-#          key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
-#
-#      - name: Install dependencies
-#        if: steps.cache.outputs.cache-hit != 'true'
-#        run: npm ci
+#      - name: Hello World
+#        run: echo 'Hi!'
+      - name: Get code
+        uses: actions/checkout@v3
 
-#      - name: Build code
-#        run: npm run start
+      - name: Install Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Cache dependencies
+        id: cache
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
+
+      - name: Install dependencies
+        if: steps.cache.outputs.cache-hit != 'true'
+        run: npm ci
+
+      - name: Run Program
+        run: npm run start
 
 
 

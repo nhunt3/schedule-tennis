@@ -13,6 +13,6 @@
     "@playwright/test": "^1.35.0"
   },
   "dependencies": {
-    "aws-sdk": "^2.1395.0"
+    "aws-sdk": "^2.1396.0"
   }
 }

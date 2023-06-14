@@ -1,8 +1,10 @@
 const playwright = require('@playwright/test');
 const { SSM, config } = require('aws-sdk');
+const { setTimeRange } = require('./util');
 config.update({region:'us-east-1'});
 
-async function main() {
+async function book(options) {
+  const { dayOfWeek, startTime, numberOf30MinSlots, courtNumber} = options;
   const ssm = new SSM();
   const result = await ssm
       .getParameter({ Name: 'my-oldest-password', WithDecryption: true })
@@ -10,7 +12,7 @@ async function main() {
   const password = result.Parameter.Value;
 
   const browser = await playwright.chromium.launch({
-    headless: false // setting this to true will not run the UI
+    headless: true // setting this to true will not run the UI
   });
 
   const page = await browser.newPage();
@@ -22,22 +24,30 @@ async function main() {
     await page.locator("[name='commit']").click();
   }
 
-  await page.getByRole('button', { name: /Piedmont Park/i }).click();
+  await page.getByRole('button', { name: "Sharon E. Lester at Piedmont Park" }).click();
+  await page.locator('a[value="Sharon E. Lester at Piedmont Park"]').isVisible();
   await page.getByText("Book Now").click();
-  await page.getByText("Tue").click();
-  await page.getByText("4:30-5pm").click();
-  await page.getByText("5-5:30pm").click();
-  await page.getByText("5:30-6pm").click();
-  await page.getByText("6-6:30pm").click();
-  await page.getByText("Court 5").click();
-  await page.getByRole('button', { name: "Next" }).click();
-  await page.getByRole('button', { name: "Add Users" }).click();
-  await page.getByRole('button', { name: "Add", exact: true }).click();
-  await page.getByRole('button', { name: "Next" }).click();
+  // await page.getByText(dayOfWeek, {exact: true }).click();
+  //
+  // const timeSlots = setTimeRange(startTime, numberOf30MinSlots);
+  // for (timeSlot of timeSlots) {
+  //   await page.getByText(timeSlot).click();
+  // }
+  //
+  // await page.getByText("Court " + courtNumber).click();
+  // await page.getByRole('button', { name: "Next" }).click();
+  // await page.getByRole('button', { name: "Add Users" }).click();
+  // await page.getByRole('button', { name: "Add", exact: true }).click();
+  // await page.getByRole('button', { name: "Next" }).click();
 
 
   // await page.waitForTimeout(5000); // wait for 5 seconds
-  // await browser.close();
+  await browser.close();
 }
 
-main();
+book({
+  dayOfWeek: 'Fri',
+  startTime: '9',
+  numberOf30MinSlots: 3,
+  courtNumber: '4'
+});
