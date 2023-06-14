@@ -9,10 +9,8 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "devDependencies": {
-    "@playwright/test": "^1.35.0"
-  },
   "dependencies": {
+    "@playwright/test": "^1.35.0",
     "aws-sdk": "^2.1396.0"
   }
 }
