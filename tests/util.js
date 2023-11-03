@@ -39,3 +39,31 @@ exports.setTimeRange = (startTime, numberOf30MinSlots) => {
 
     return arrayOfTimeSlots;
 };
+
+exports.getFacilityNameOnButton = (facility) => {
+    switch (facility) {
+        case 'Piedmont Park': {
+            return 'Sharon E. Lester at Piedmont Park';
+        }
+        case 'Bitsy Grant': {
+            return 'Bitsy Grant';
+        }
+        case 'Sandy Springs': {
+            return 'Sandy Springs Tennis Center';
+        }
+    }
+};
+
+exports.getBookNowHeader = (facility) => {
+    switch (facility) {
+        case 'Piedmont Park': {
+            return 'sharonlestertenniscenter';
+        }
+        case 'Bitsy Grant': {
+            return 'bitsygrant';
+        }
+        case 'Sandy Springs': {
+            return 'sandyspringstc';
+        }
+    }
+};

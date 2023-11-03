@@ -13,8 +13,6 @@ jobs:
     name: Schedule Tennis
     runs-on: ubuntu-latest
     steps:
-#      - name: Hello World
-#        run: echo 'Hi!'
       - name: Get code
         uses: actions/checkout@v3
 
